@@ -1,10 +1,33 @@
-export default function App() {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import Dashboard from './pages/Dashboard';
+import Users from './pages/Users';
+import Settings from './pages/Settings';
+import useThemeStore from './store/themeStore';
+
+function App() {
+  const dark = useThemeStore(state => state.dark);
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-indigo-500 mb-4">🚀 Mystic-ISM</h1>
-        <p className="text-lg text-gray-300">Die schönste Admin-Oberfläche der Welt startet jetzt.</p>
+    <div className={dark ? 'dark' : ''}>
+      <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+        <Router>
+          <Sidebar />
+          <div className="flex-1">
+            <Header />
+            <main className="p-6">
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/users" element={<Users />} />
+                <Route path="/settings" element={<Settings />} />
+              </Routes>
+            </main>
+          </div>
+        </Router>
       </div>
     </div>
   );
 }
+
+export default App;
