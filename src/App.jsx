@@ -1,20 +1,28 @@
 import React from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
-import './index.css'; // Tailwind & globale Styles
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Analytics from './pages/Analytics';
+import Settings from './pages/Settings';
 
 const App = () => {
   return (
-    <div className="flex h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
-      <Sidebar />
-      <div className="flex-1 flex flex-col">
-        <Header />
-        <main className="p-4">
-          <h1 className="text-xl font-bold">Dashboard</h1>
-          <p>Welcome to your Admin Dashboard 🚀</p>
-        </main>
+    <Router>
+      <div className="flex h-screen">
+        <Sidebar />
+        <div className="flex-1">
+          <Header />
+          <main className="p-4">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/settings" element={<Settings />} />
+            </Routes>
+          </main>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
 
