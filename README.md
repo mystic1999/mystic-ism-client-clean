@@ -1,3 +1,3 @@
-# Mystic-ISM Frontend
+# Mystic-ISM Vite Client
 
-Deploy via Vercel.
+Ready for Vercel deployment.

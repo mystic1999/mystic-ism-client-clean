@@ -1,3 +1,8 @@
 export default function App() {
-  return <h1>🧠 Mystic-ISM Client ist verbunden!</h1>;
+  return (
+    <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+      <h1>🚀 Mystic-ISM läuft!</h1>
+      <p>API-Endpunkt: {import.meta.env.VITE_API_URL}</p>
+    </div>
+  )
 }
