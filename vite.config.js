@@ -1,1 +1,4 @@
-// Placeholder for vite.config.js
+export default {
+  plugins: [react()],
+  base: './',
+}
