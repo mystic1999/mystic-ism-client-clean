@@ -1,31 +1,28 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
-import Dashboard from './pages/Dashboard';
-import Users from './pages/Users';
-import Settings from './pages/Settings';
-import useThemeStore from './store/themeStore';
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Users from "./pages/Users";
+import Settings from "./pages/Settings";
 
 export default function App() {
-  const dark = useThemeStore(state => state.dark);
-
   return (
-    <div className={dark ? 'dark' : ''}>
-      <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
-        <Router>
-          <Sidebar />
-          <div className="flex-1">
-            <Header />
-            <main className="p-6">
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/users" element={<Users />} />
-                <Route path="/settings" element={<Settings />} />
-              </Routes>
-            </main>
-          </div>
-        </Router>
+    <Router>
+      <div className="flex h-screen">
+        <aside className="w-64 bg-gray-800 text-white p-4">
+          <h1 className="text-lg font-bold mb-6">🔒 Mystic-ISM Admin</h1>
+          <nav className="flex flex-col gap-2">
+            <NavLink to="/" className="hover:text-blue-400" end>Dashboard</NavLink>
+            <NavLink to="/users" className="hover:text-blue-400">Users</NavLink>
+            <NavLink to="/settings" className="hover:text-blue-400">Settings</NavLink>
+          </nav>
+        </aside>
+        <main className="flex-1 p-6 overflow-auto">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </main>
       </div>
-    </div>
+    </Router>
   );
 }
