@@ -1,1 +1,7 @@
-// Placeholder for src/App.jsx
+function App() {
+  return (
+    <div>Hello from App!</div>
+  );
+}
+
+export default App;
