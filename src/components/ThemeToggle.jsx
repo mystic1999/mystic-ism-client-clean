@@ -1,15 +1,10 @@
 import useThemeStore from '../store/themeStore';
 
-function ThemeToggle() {
+export default function ThemeToggle() {
   const { dark, toggleTheme } = useThemeStore();
   return (
-    <button
-      onClick={toggleTheme}
-      className="bg-gray-300 dark:bg-gray-700 text-sm px-4 py-2 rounded"
-    >
-      {dark ? 'Light Mode' : 'Dark Mode'}
+    <button onClick={toggleTheme} className="bg-gray-700 px-3 py-1 rounded text-sm">
+      {dark ? '🌞 Light' : '🌙 Dark'}
     </button>
   );
 }
-
-export default ThemeToggle;
